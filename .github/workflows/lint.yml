@@ -3,12 +3,11 @@ run-name: ${{ github.workflow }}-${{ github.actor }}-${{ github.event.head_commi
 on:
   push:
     branches:
-      - ci_cd
-      - feat/authTests
-      - refactoring/initialVersion
+      - main
+      - ci-cd
   pull_request:
     branches:
-      - develop
+      - main
 jobs:
   run-linter:
     runs-on: ubuntu-latest

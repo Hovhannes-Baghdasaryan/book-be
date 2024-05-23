@@ -1,5 +1,5 @@
 import {AppModule} from './app.module'
-import {LogInfo} from './common/helpers/logger.helper'
+import {LogInfo} from '@helpers/logger.helper'
 import {NestFactory} from '@nestjs/core'
 import {ConfigService} from '@nestjs/config'
 import {NestExpressApplication} from '@nestjs/platform-express'
@@ -8,7 +8,7 @@ import * as activityLogs from '@enums/active-logs'
 import {ValidationPipe} from '@nestjs/common'
 import {GlobalValidationPipeDataTransform} from '@exceptions/global.exception'
 
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: {
       origin: true,

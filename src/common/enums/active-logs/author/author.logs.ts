@@ -1,4 +1,5 @@
-export enum AuthLogsFunctions {
-  RegisterAuthor = 'RegisterAuthor',
-  LoginAuthor = 'LoginAuthor',
+export enum AuthorLogsFunctions {
+  GetProfile = 'GetProfile',
+  DeleteProfile = 'DeleteProfile',
+  UpdateProfile = 'UpdateProfile',
 }

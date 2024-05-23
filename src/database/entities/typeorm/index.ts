@@ -1,1 +1,2 @@
-export {UserEntity} from './user.entity'
+export {AuthorEntity} from './author.entity'
+export {BookEntity} from './book.entity'

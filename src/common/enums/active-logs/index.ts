@@ -1,3 +1,5 @@
 export * from './app'
 export * from './auth'
+export * from './author'
+export * from './book'
 export * from './global.enum'

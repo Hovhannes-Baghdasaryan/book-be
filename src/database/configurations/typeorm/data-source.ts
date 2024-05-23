@@ -1,5 +1,5 @@
-import 'reflect-metadata';
-import { DataSource, DataSourceOptions } from 'typeorm';
+import 'reflect-metadata'
+import {DataSource, DataSourceOptions} from 'typeorm'
 
 export const AppDataSource = new DataSource({
   type: process.env.DATABASE_TYPE,
@@ -16,7 +16,7 @@ export const AppDataSource = new DataSource({
   migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
   cli: {
     entitiesDir: 'src',
-    migrationsDir: 'src/database/configurations/typeorm/migrations',
+    migrationsDir: '/migrations',
     subscribersDir: 'subscriber',
   },
-} as DataSourceOptions);
+} as DataSourceOptions)

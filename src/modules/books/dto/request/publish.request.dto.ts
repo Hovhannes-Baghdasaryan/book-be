@@ -1,18 +1,14 @@
-import {IsDate, IsOptional, IsString, MaxLength} from 'class-validator'
-import {Type} from 'class-transformer'
+import {IsString, MaxLength} from 'class-validator'
+import {ApiProperty} from '@nestjs/swagger'
 
-export class UpdateAuthorDTO {
-  @IsOptional()
+export class PublishBookDTO {
+  @ApiProperty()
   @IsString()
   @MaxLength(20)
-  username: string
+  title: string
 
-  @IsDate()
-  @IsOptional()
-  @Type(() => Date)
-  birthdate: Date
-
-  @IsOptional()
+  @ApiProperty()
   @IsString()
-  biography: string
+  @MaxLength(20)
+  isbn: string
 }

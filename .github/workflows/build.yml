@@ -3,10 +3,11 @@ run-name: ${{ github.workflow }}-${{ github.actor }}
 on:
   push:
     branches:
-      - ci_cd
+      - main
+      - ci-cd
   pull_request:
     branches:
-      - develop
+      - main
 
 jobs:
   build:

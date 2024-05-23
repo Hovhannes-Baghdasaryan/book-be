@@ -1,10 +1,10 @@
-import {UserEntity} from '@entities/typeorm'
 import {TypeOrmModule} from '@nestjs/typeorm'
-import {UsersRepository} from '@repositories/typeorm'
+import {AuthorEntity, BookEntity} from '@entities/typeorm'
+import {AuthorRepository, BookRepository} from '@repositories/typeorm'
 
-export const TypeORMAllEntities = [UserEntity]
+export const TypeORMAllEntities = [AuthorEntity, BookEntity]
 
-export const TypeORMAllRepositories = [UsersRepository]
+export const TypeORMAllRepositories = [AuthorRepository, BookRepository]
 
 export const TypeORMConfiguration = TypeOrmModule.forFeature([
   ...TypeORMAllEntities,

@@ -1,4 +1,6 @@
-export enum AuthorLogsFunctions {
-  GetProfile = 'GetProfile',
-  UpdateProfile = 'UpdateProfile',
+export enum BookLogsFunctions {
+  PublishBook = 'PublishBook',
+  UpdateBook = 'UpdateBook',
+  DeleteBook = 'DeleteBook',
+  GetPublicBooks = 'GetPublicBooks',
 }

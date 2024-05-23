@@ -1,4 +1,4 @@
 export enum LogsActions {
   Failed = 'Failed',
-  Succeed = 'Succeed',
+  Succeed = 'Succeeded',
 }

@@ -11,8 +11,8 @@ import {
 export abstract class RegularEntity extends BaseEntity {
   __entity?: string
 
-  @PrimaryGeneratedColumn()
-  id: number
+  @PrimaryGeneratedColumn('uuid')
+  id: string
 
   @CreateDateColumn()
   createdAt: Date
@@ -24,11 +24,11 @@ export abstract class RegularEntity extends BaseEntity {
   deletedAt: Date
 
   @AfterLoad()
-  setEntityName() {
+  setEntityName(): void {
     this.__entity = this.constructor.name
   }
 
-  toJSON() {
+  toJSON(): Record<string, RegularEntity> {
     return instanceToPlain(this)
   }
 }

@@ -7,7 +7,7 @@ export interface I_Success<T = object> {
   statusCode?: HttpStatus
 }
 
-export class SuccessDto<T = object> implements I_Success<T> {
+export class SuccessDTO<T = object> implements I_Success<T> {
   @ApiProperty({default: HttpStatus.OK})
   statusCode: HttpStatus
 
