@@ -1,0 +1,1 @@
+export const AUTH_NOT_FOUND = 'AUTH_NOT_FOUND'

@@ -1,0 +1,1 @@
+export const FIND_ALL_DATA_ERROR = 'FIND_ALL_DATA_ERROR'
