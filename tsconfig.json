@@ -21,6 +21,7 @@
       "@errors/*": ["common/errors/*"],
       "@config/*": ["common/config/*"],
       "@enums/*": ["common/enums/*"],
+      "@guards/*": ["common/guards/*"],
       "@constants/*": ["common/constants/*"],
       "@types/*": ["common/types/*"],
       "@helpers/*": ["common/helpers/*"],

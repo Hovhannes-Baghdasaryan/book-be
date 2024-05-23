@@ -1,1 +1,1 @@
-export * from './author.logs'
+export * from './book.logs'

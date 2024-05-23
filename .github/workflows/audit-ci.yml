@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - ci_cd
+      - main
   pull_request:
     branches:
-      - develop
+      - main
 jobs:
   run-audit-ci:
     runs-on: ubuntu-latest

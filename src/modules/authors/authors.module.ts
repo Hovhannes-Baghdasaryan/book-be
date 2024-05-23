@@ -1,9 +1,11 @@
 import {Module} from '@nestjs/common'
-import {UsersService} from './users.service'
-import {UsersController} from './users.controller'
+import {AuthorsService} from './authors.service'
+import {AuthorsController} from './authors.controller'
+import {JwtService} from '@nestjs/jwt'
+import {EntityValidator} from '@validators/entity.validator'
 
 @Module({
-  providers: [UsersService],
-  controllers: [UsersController],
+  providers: [AuthorsService, JwtService, EntityValidator],
+  controllers: [AuthorsController],
 })
-export class UsersModule {}
+export class AuthorsModule {}

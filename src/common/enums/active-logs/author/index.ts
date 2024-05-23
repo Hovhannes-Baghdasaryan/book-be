@@ -1,1 +1,1 @@
-export * from './auth.logs'
+export * from './author.logs'

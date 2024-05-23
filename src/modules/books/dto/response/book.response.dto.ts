@@ -1,18 +1,28 @@
-import {AuthorEntity} from '@entities/typeorm'
+import {ApiProperty} from '@nestjs/swagger'
 import {BookEntity} from '@entities/typeorm/book.entity'
+import {AuthorDTO} from 'modules/authors/dto/response/profile.response.dto'
 
-export class AuthorDTO {
+export class BookDTO {
+  @ApiProperty()
   id: string
-  username: string
-  birthdate: Date
-  biography: string
-  books: BookEntity[]
 
-  constructor(author: AuthorEntity) {
-    this.id = author.id
-    this.username = author.username
-    this.birthdate = author.birthdate
-    this.biography = author.biography
-    this.books = author.books
+  @ApiProperty()
+  title: string
+
+  @ApiProperty()
+  isbn: string
+
+  @ApiProperty()
+  publishedAt: Date
+
+  @ApiProperty()
+  author: AuthorDTO
+
+  constructor(book: BookEntity) {
+    this.id = book.id
+    this.title = book.title
+    this.isbn = book.isbn
+    this.publishedAt = book.published_at
+    this.author = new AuthorDTO(book.author)
   }
 }

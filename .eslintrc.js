@@ -58,7 +58,7 @@ module.exports = {
     '@typescript-eslint/no-restricted-imports': [
       'error',
       {
-        patterns: [{group: ['*../../*'], message: 'Please use import like: "@apps/users/..."'}],
+        patterns: [{group: ['*../../*'], message: 'Please use import like: "@apps/authors/..."'}],
       },
     ],
     'date/no-new-date-without-args': 'error',

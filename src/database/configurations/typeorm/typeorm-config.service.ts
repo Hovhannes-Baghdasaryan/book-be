@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
+import {Injectable} from '@nestjs/common'
+import {ConfigService} from '@nestjs/config'
+import {TypeOrmModuleOptions, TypeOrmOptionsFactory} from '@nestjs/typeorm'
 
 @Injectable()
 export class TypeOrmConfigService implements TypeOrmOptionsFactory {
@@ -22,9 +22,9 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
       cli: {
         entitiesDir: 'src',
-        migrationsDir: 'src/database/migrations',
+        migrationsDir: 'src/database/configurations/migrations',
         subscribersDir: 'subscriber',
       },
-    } as TypeOrmModuleOptions;
+    } as TypeOrmModuleOptions
   }
 }

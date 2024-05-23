@@ -1,3 +1,5 @@
 export enum AuthLogsFunctions {
-  RegisterUser = 'RegisterUser',
+  RegisterAuthor = 'RegisterAuthor',
+  LoginAuthor = 'LoginAuthor',
+  AuthGuard = 'AuthGuard',
 }

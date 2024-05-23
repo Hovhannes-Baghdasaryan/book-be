@@ -5,14 +5,12 @@ import {FindManyOptions} from 'typeorm/find-options/FindManyOptions'
 import {FindOptionsOrder} from 'typeorm/find-options/FindOptionsOrder'
 
 export class BaseRepository<T> extends Repository<T> {
-  async findAll(
-    pageNumber: number,
+  async findAllPaginated(
+    page: number,
     pageSize: number,
     findManyOptions?: FindManyOptions<T> & FindOptionsOrder<T>,
   ): Promise<{data: T[]; totalItems: number}> {
     try {
-      const page = pageNumber ? pageNumber : 1
-
       const query = {
         ...findManyOptions,
         relations: {...findManyOptions?.relations},

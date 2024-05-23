@@ -1,19 +1,23 @@
+import {ApiProperty} from '@nestjs/swagger'
 import {AuthorEntity} from '@entities/typeorm'
 
-export class AuthDto {
+export class AuthorDTO {
+  @ApiProperty()
   id: string
-  username: string
-  birthdate: Date
-  biography: string
-  token: string
 
-  constructor(author: AuthorEntity, token?: string) {
-    this.id = author.id
-    this.username = author.username
-    this.birthdate = author.birthdate
-    this.biography = author.biography
-    if (token) {
-      this.token = token
-    }
+  @ApiProperty()
+  username: string
+
+  @ApiProperty()
+  birthdate: Date
+
+  @ApiProperty()
+  biography: string
+
+  constructor(author: AuthorEntity | null) {
+    this.id = author?.id || null
+    this.username = author?.username || 'Deleted Account'
+    this.birthdate = author?.birthdate || null
+    this.biography = author?.biography || null
   }
 }
