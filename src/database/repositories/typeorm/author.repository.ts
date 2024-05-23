@@ -1,7 +1,7 @@
 import {Injectable} from '@nestjs/common'
 import {AuthorEntity} from '@entities/typeorm'
 import {InjectRepository} from '@nestjs/typeorm'
-import {BaseRepository} from 'common/repositories'
+import {BaseRepository} from '@common/repositories'
 import {IAuthContext} from '@decorators/auth.decorator'
 import {DataSource, DeleteResult, Repository} from 'typeorm'
 import {RegisterDTO} from 'modules/auth/dto/request/register.request.dto'
@@ -26,6 +26,12 @@ export class AuthorRepository extends BaseRepository<AuthorEntity> {
   deleteAuthor(authContext: IAuthContext): Promise<DeleteResult> {
     return this.softDelete({
       id: authContext.id,
+    })
+  }
+
+  findByUsername(username: string): Promise<AuthorEntity> {
+    return this.findOneBy({
+      username,
     })
   }
 }

@@ -18,6 +18,8 @@
       "@entities/*": ["database/entities/*"],
       "@repositories/*": ["database/repositories/*"],
       "@database-configurations/*": ["database/configurations/*"],
+      "@common/*": ["common/*"],
+      "@modules/*": ["modules/*"],
       "@errors/*": ["common/errors/*"],
       "@config/*": ["common/config/*"],
       "@enums/*": ["common/enums/*"],

@@ -7,16 +7,16 @@ export class UpdateAuthorDTO {
   @IsOptional()
   @IsString()
   @MaxLength(20)
-  username: string
+  username?: string
 
   @ApiProperty()
   @IsDate()
   @IsOptional()
   @Type(() => Date)
-  birthdate: Date
+  birthdate?: Date
 
   @ApiProperty()
   @IsOptional()
   @IsString()
-  biography: string
+  biography?: string
 }

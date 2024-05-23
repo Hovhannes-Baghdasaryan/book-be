@@ -95,6 +95,8 @@
     "moduleNameMapper": {
       "^src/(.*)$": "<rootDir>/$1",
       "^@entities/(.*)$": "<rootDir>/src/database/entities/$1",
+      "^@common/(.*)$": "<rootDir>/src/common/$1",
+      "^@modules/(.*)$": "<rootDir>/src/modules/$1",
       "^@repositories/(.*)$": "<rootDir>/src/database/repositories/$1",
       "^@database-configurations/(.*)$": "<rootDir>/src/database/configurations/$1",
       "^@errors/(.*)$": "<rootDir>/src/common/errors/$1",

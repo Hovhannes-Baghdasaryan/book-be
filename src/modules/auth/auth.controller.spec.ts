@@ -1,9 +1,11 @@
 import {Test, TestingModule} from '@nestjs/testing'
 import {AuthController} from './auth.controller'
-import {LoginDTO, RegisterDTO} from './dto/request/auth.request.dto'
 import {AuthDto} from './dto/response/auth.response.dto'
 import {SuccessDTO} from '@responses/successDTO'
 import {AuthService} from './auth.service'
+import {RegisterDTO} from './dto/request/register.request.dto'
+import {LoginDTO} from './dto/request/login.request.dto'
+import {AuthorEntity} from '@entities/typeorm'
 
 describe('AuthController', () => {
   let authController: AuthController
@@ -44,10 +46,9 @@ describe('AuthController', () => {
   describe('login', () => {
     it('should login an author and return response', async () => {
       const loginDto: LoginDTO = {username: 'testuser', password: 'testpass'}
+      const authorResponseData = {username: 'testuser'} as AuthorEntity
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      const authDto: AuthDto = new AuthDto({username: 'testuser'}, 'testToken')
+      const authDto: AuthDto = new AuthDto(authorResponseData, 'testToken')
       jest.spyOn(authService, 'loginAuthor').mockResolvedValue(authDto)
 
       const result = await authController.login(loginDto)

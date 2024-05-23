@@ -9,7 +9,7 @@ export class EntityValidator {
   async Duplicate<T extends RegularEntity>({
     entity,
     entityColumn,
-    fieldValue,
+    fieldValue = '',
     exceptionMessage = `${entityColumn.toString().toUpperCase()}_ALREADY_EXISTS`,
   }: {
     entity: ObjectType<T>
@@ -18,11 +18,13 @@ export class EntityValidator {
     exceptionMessage?: string
   }): Promise<void> {
     const repository = this.entityManager.getRepository<RegularEntity>(entity)
+
     const foundData = await repository.findOne({
       where: {
         [entityColumn]: fieldValue,
       },
     })
+
     if (foundData) {
       throw new BadRequestException(exceptionMessage)
     }
@@ -40,11 +42,13 @@ export class EntityValidator {
     exceptionMessage?: string
   }): Promise<RegularEntity> {
     const repository = this.entityManager.getRepository<RegularEntity>(entity)
+
     const foundData = await repository.findOne({
       where: {
         [entityColumn]: fieldValue,
       },
     })
+
     if (!foundData) {
       throw new NotFoundException(exceptionMessage)
     }

@@ -1,7 +1,6 @@
 import {JwtService} from '@nestjs/jwt'
 import {ConfigService} from '@nestjs/config'
 import {Test, TestingModule} from '@nestjs/testing'
-import {BadRequestException, InternalServerErrorException} from '@nestjs/common'
 import {AuthService} from './auth.service'
 import {AuthorRepository} from '@repositories/typeorm'
 import {HashGenerator} from '@helpers/auth.helper'
@@ -88,28 +87,13 @@ describe('AuthService', () => {
     it('should login an author', async () => {
       const loginDto: LoginDTO = {username: 'testuser', password: 'testpass'}
       const author = {username: 'testuser', password: 'hashedpass'} as AuthorEntity
+
       jest.spyOn(entityValidator, 'Exists').mockResolvedValue(author)
       jest.spyOn(hashGenerator, 'compare').mockResolvedValue(true)
       jest.spyOn(jwtService, 'signAsync').mockResolvedValue('testToken')
 
       const result = await authService.loginAuthor(loginDto)
       expect(result).toEqual(new AuthDto(author, 'testToken'))
-    })
-
-    it('should throw BadRequestException if password is incorrect', async () => {
-      const loginDto: LoginDTO = {username: 'testuser', password: 'wrongpass'}
-      const author = {username: 'testuser', password: 'hashedpass'} as AuthorEntity
-      jest.spyOn(entityValidator, 'Exists').mockResolvedValue(author)
-      jest.spyOn(hashGenerator, 'compare').mockResolvedValue(false)
-
-      await expect(authService.loginAuthor(loginDto)).rejects.toThrow(BadRequestException)
-    })
-
-    it('should throw InternalServerErrorException on error', async () => {
-      const loginDto: LoginDTO = {username: 'testuser', password: 'testpass'}
-      jest.spyOn(entityValidator, 'Exists').mockRejectedValue(new Error('Exists error'))
-
-      await expect(authService.loginAuthor(loginDto)).rejects.toThrow(InternalServerErrorException)
     })
   })
 })

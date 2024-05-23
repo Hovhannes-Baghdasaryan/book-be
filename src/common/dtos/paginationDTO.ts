@@ -3,7 +3,7 @@ import {IsEnum, IsInt, IsOptional, Min} from 'class-validator'
 import {SortOrder} from '@enums/sort-order.enum'
 import {Type} from 'class-transformer'
 
-export class PaginationDto {
+export class PaginationDTO {
   @IsOptional()
   @IsInt()
   @Min(1)
@@ -36,5 +36,5 @@ export class PaginationDto {
     required: false,
     description: 'Sort Order Ascending or Descending',
   })
-  sort: SortOrder = SortOrder.DESC
+  sort?: SortOrder = SortOrder.DESC
 }
