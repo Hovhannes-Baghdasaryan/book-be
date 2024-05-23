@@ -5,13 +5,13 @@ import * as activityLogs from '@enums/active-logs'
 import {handleError} from '@helpers/error.helper'
 import {LogError} from '@helpers/logger.helper'
 import {IAuthContext} from '@decorators/auth.decorator'
-import {BookDTO} from './dto/response/book.response.dto'
 import {UpdateBookDTO} from './dto/request/update.request.dto'
 import {PublishBookDTO} from './dto/request/publish.request.dto'
 import {I_PaginatedSuccess} from '@responses/paginated.dto'
-import {PaginationDto} from '@dto/pagination.dto'
+import {PaginationDTO} from '@dto/paginationDTO'
 import {EntityValidator} from '@validators/entity.validator'
 import {BookEntity} from '@entities/typeorm'
+import {BookAuthorDTO, BookDTO} from '@modules/books/dto/response/book.response.dto'
 
 @Injectable()
 export class BooksService {
@@ -20,7 +20,7 @@ export class BooksService {
     private readonly entityValidator: EntityValidator,
   ) {}
 
-  async getPublicBooks(paginatedDto: PaginationDto): Promise<I_PaginatedSuccess<BookDTO[]>> {
+  async getPublicBooks(paginatedDto: PaginationDTO): Promise<I_PaginatedSuccess<BookAuthorDTO[]>> {
     try {
       const {data, totalItems} = await this.bookRepository.findAllPaginated(
         paginatedDto.page,
@@ -37,7 +37,7 @@ export class BooksService {
 
       return {
         totalItems,
-        items: data.map((book) => new BookDTO(book)),
+        items: data.map((book) => new BookAuthorDTO(book)),
         page: paginatedDto.page,
         perPage: paginatedDto.perPage,
       }

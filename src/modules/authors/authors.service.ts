@@ -8,8 +8,8 @@ import {AuthorRepository, BookRepository} from '@repositories/typeorm'
 import {EntityValidator} from '@validators/entity.validator'
 import {AuthorDTO} from './dto/response/profile.response.dto'
 import {UpdateAuthorDTO} from './dto/request/update-profile.request.dto'
-import {BookDTO} from '../books/dto/response/book.response.dto'
-import {PaginationDto} from '@dto/pagination.dto'
+import {BookAuthorDTO, BookDTO} from '../books/dto/response/book.response.dto'
+import {PaginationDTO} from '@dto/paginationDTO'
 import {I_PaginatedSuccess} from '@responses/paginated.dto'
 import {I_Success, SuccessDTO} from '@responses/successDTO'
 
@@ -21,7 +21,7 @@ export class AuthorsService {
     private readonly bookRepository: BookRepository,
   ) {}
 
-  async deleteAuthor(authContext: IAuthContext): Promise<I_Success<null>> {
+  async deleteAuthor(authContext: IAuthContext): Promise<I_Success> {
     try {
       await this.authorRepository.deleteAuthor(authContext)
 
@@ -38,7 +38,7 @@ export class AuthorsService {
   }
 
   async getAuthorBooks(
-    paginatedDto: PaginationDto,
+    paginatedDto: PaginationDTO,
     authContext: IAuthContext,
   ): Promise<I_PaginatedSuccess<BookDTO[]>> {
     try {
@@ -74,7 +74,6 @@ export class AuthorsService {
     try {
       const author = await this.authorRepository.findOne({
         where: {id: authContext.id},
-        relations: {books: true},
       })
 
       return new AuthorDTO(author)

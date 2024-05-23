@@ -1,5 +1,5 @@
 import {Column, Entity, JoinTable, ManyToOne, Relation} from 'typeorm'
-import {RegularEntity} from 'common/entities/regular.entity'
+import {RegularEntity} from '@common/entities/regular.entity'
 import {AuthorEntity} from './author.entity'
 
 @Entity({name: 'books'})

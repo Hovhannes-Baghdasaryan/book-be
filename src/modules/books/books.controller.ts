@@ -1,7 +1,7 @@
 import {ApiTags} from '@nestjs/swagger'
 import {AuthGuard} from '@guards/auth.guard'
 import {BooksService} from './books.service'
-import {PaginationDto} from '@dto/pagination.dto'
+import {PaginationDTO} from '@dto/paginationDTO'
 import {SuccessDTO} from '@responses/successDTO'
 import {BookDTO} from './dto/response/book.response.dto'
 import {UpdateBookDTO} from './dto/request/update.request.dto'
@@ -23,7 +23,7 @@ export class BooksController {
 
   @Get()
   @ApiPaginatedOutputDecorator(BookDTO)
-  async publicBooks(@Query() paginatedDTO: PaginationDto): Promise<I_PaginatedSuccess<BookDTO[]>> {
+  async publicBooks(@Query() paginatedDTO: PaginationDTO): Promise<I_PaginatedSuccess<BookDTO[]>> {
     const response = await this.booksService.getPublicBooks(paginatedDTO)
     return new PaginatedSuccessDTO(response)
   }

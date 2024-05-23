@@ -1,7 +1,7 @@
 import {Injectable} from '@nestjs/common'
 import {DataSource, Repository} from 'typeorm'
 import {InjectRepository} from '@nestjs/typeorm'
-import {BaseRepository} from 'common/repositories'
+import {BaseRepository} from '@common/repositories'
 import {BookEntity} from '@entities/typeorm/book.entity'
 import {PublishBookDTO} from 'modules/books/dto/request/publish.request.dto'
 import {UpdateBookDTO} from 'modules/books/dto/request/update.request.dto'

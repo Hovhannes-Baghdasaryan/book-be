@@ -1,20 +1,20 @@
 import {Body, Controller, Delete, Get, Patch, Query} from '@nestjs/common'
+import {ApiTags} from '@nestjs/swagger'
 import {AuthGuard} from '@guards/auth.guard'
 import {AuthorsService} from './authors.service'
-import {PaginationDto} from '@dto/pagination.dto'
-import {ApiTags} from '@nestjs/swagger'
+import {PaginationDTO} from '@dto/paginationDTO'
 import {I_Success, SuccessDTO} from '@responses/successDTO'
 import {AuthorDTO} from './dto/response/profile.response.dto'
 import {BookDTO} from '../books/dto/response/book.response.dto'
 import {UpdateAuthorDTO} from './dto/request/update-profile.request.dto'
 import {
-  ApiAuthBearerDecorator,
-  AuthContextDecorator,
   IAuthContext,
+  AuthContextDecorator,
+  ApiAuthBearerDecorator,
 } from '@decorators/auth.decorator'
+import {ApiOutputDecorator} from '@decorators/output-openapi.decorator'
 import {I_PaginatedSuccess, PaginatedSuccessDTO} from '@responses/paginated.dto'
 import {ApiPaginatedOutputDecorator} from '@decorators/output-paginated-openapi.decorator'
-import {ApiOutputDecorator} from '@decorators/output-openapi.decorator'
 
 @ApiTags('Author')
 @Controller('author')
@@ -25,7 +25,7 @@ export class AuthorsController {
   @ApiAuthBearerDecorator(AuthGuard)
   @ApiPaginatedOutputDecorator(BookDTO)
   async authorBooks(
-    @Query() paginatedDTO: PaginationDto,
+    @Query() paginatedDTO: PaginationDTO,
     @AuthContextDecorator() authContext: IAuthContext,
   ): Promise<I_PaginatedSuccess<BookDTO[]>> {
     const response = await this.authorsService.getAuthorBooks(paginatedDTO, authContext)
@@ -56,7 +56,7 @@ export class AuthorsController {
   @Delete('remove')
   @ApiAuthBearerDecorator(AuthGuard)
   @ApiPaginatedOutputDecorator(BookDTO)
-  async deleteAuthor(@AuthContextDecorator() authContext: IAuthContext): Promise<I_Success<void>> {
+  async deleteAuthor(@AuthContextDecorator() authContext: IAuthContext): Promise<I_Success> {
     const response = await this.authorsService.deleteAuthor(authContext)
     return new SuccessDTO(response)
   }
